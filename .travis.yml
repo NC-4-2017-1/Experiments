@@ -3,9 +3,6 @@ jdk:
 - oraclejdk8
 sudo: false
 script: mvn clean package
-  on:
-    tags: false
-    all_branches: true
 notifications:
   email:
     recipients:
