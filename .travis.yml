@@ -8,6 +8,7 @@ addons:
         packages:
             - sshpass
 after_success:
-  - ssh -oStrictHostKeyChecking=no $h uptime
+  - echo $NC_SERVER
+  - ssh-keyscan -p 9204 -H $NC_SERVER >> ~/.ssh/known_hosts
   - export SSHPASS='$NC_PASS'
-  - sshpass -e scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
+  - sshpass -e scp -P 9204 target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
