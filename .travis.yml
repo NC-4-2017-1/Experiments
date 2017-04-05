@@ -11,4 +11,6 @@ notifications:
     on_failure: always
 after_success:
   - sudo apt-get install -y sshpass
-  - sshpass -p$NC_PASS scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:/opt/project/NC_4_2017_1.war
+  - echo $NC_PASS
+  - echo $NC_USER@$NC_PASS
+  - sshpass -p$NC_PASS scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_PASS:~/NC_4_2017_1.war
