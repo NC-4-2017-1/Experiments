@@ -4,11 +4,12 @@ jdk:
 sudo: false
 script: mvn clean package
 addons:
+    ssh_known_hosts:
+        - 195.149.125.82
+        - 195.149.125.82:9204
     apt:
         packages:
             - sshpass
 after_success:
-  - touch ~/.ssh/known_hosts
-  - ssh-keyscan -p 9204 -H $NC_SERVER >> ~/.ssh/known_hosts
   - export SSHPASS=$NC_PASS
   - sshpass -e scp -P 9204 target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
