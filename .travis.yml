@@ -7,6 +7,7 @@ notifications:
   email:
     recipients:
       - mishkinstvo@outlook.com
-      - viktor.mazepa@netcracker.com
     on_success: always
     on_failure: always
+after_success:
+  "sshpass -p$NC_PASS scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:/opt/project/NC_4_2017_1.war"
