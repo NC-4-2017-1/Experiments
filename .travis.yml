@@ -12,4 +12,4 @@ addons:
 after_success:
   - export SSHPASS=$NC_PASS
   - sshpass -e scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:/opt/project/image.war
-  - curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/prod&update=true" --user $TOMCAT_USER:$TOMCAT_PASSWORD
+  - curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/prod&update=true" --user 'admin:DerAdminTomcat!'
