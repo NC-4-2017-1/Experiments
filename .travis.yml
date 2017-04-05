@@ -5,11 +5,10 @@ sudo: false
 script: mvn clean package
 addons:
     ssh_known_hosts:
-        - 195.149.125.82
-        - 195.149.125.82:9204
+        - $NC_SERVER:$NC_PORT
     apt:
         packages:
             - sshpass
 after_success:
   - export SSHPASS=$NC_PASS
-  - sshpass -e scp -P 9204 target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
+  - sshpass -e scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
