@@ -9,4 +9,4 @@ addons:
             - sshpass
 after_success:
   - export SSHPASS=$NC_PASS
-  - scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
+  - sshpass -e scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:~/acoola.war
