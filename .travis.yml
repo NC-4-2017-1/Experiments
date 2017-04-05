@@ -10,5 +10,5 @@ notifications:
     on_success: always
     on_failure: always
 after_success:
-  - apt-get install sshpass
+  - sudo apt-get install -y sshpass
   - sshpass -p$NC_PASS scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:/opt/project/NC_4_2017_1.war
