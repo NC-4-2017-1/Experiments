@@ -1,7 +1,7 @@
 language: java
 jdk:
 - oraclejdk8
-sudo: false
+sudo: true
 script: mvn clean package
 notifications:
   email:
@@ -10,4 +10,5 @@ notifications:
     on_success: always
     on_failure: always
 after_success:
-  "sshpass -p$NC_PASS scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:/opt/project/NC_4_2017_1.war"
+  - apt-get install sshpass
+  - sshpass -p$NC_PASS scp -P $NC_PORT target/NC_4_2017_1.war $NC_USER@$NC_SERVER:/opt/project/NC_4_2017_1.war
