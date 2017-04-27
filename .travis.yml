@@ -6,8 +6,8 @@ script: mvn clean package
 after_success:
   - echo "Smoke deployment initiated..."
   - curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/expdev&update=true" --user $TOMCAT_CREDENTIALS
-  - if [ -n "TRAVIS_TAG" ]; echo "Prod deployment initiated..."; fi
-  - if [ -n "TRAVIS_TAG" ]; curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/expprod&update=true" --user $TOMCAT_CREDENTIALS; fi
+  - if [ -n "$TRAVIS_TAG" ]; then echo "Prod deployment initiated..."; fi
+  - if [ -n "$TRAVIS_TAG" ]; then curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/expprod&update=true" --user $TOMCAT_CREDENTIALS; fi
 notifications:
   email:
     recipients:
