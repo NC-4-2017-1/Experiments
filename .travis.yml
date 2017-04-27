@@ -5,3 +5,9 @@ sudo: false
 script: mvn clean package
 after_success:
   - curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/production&update=true" --user $TOMCAT_CREDENTIALS
+notifications:
+  email:
+    recipients:
+      - mishkinstvo@outlook.com
+    on_success: always
+    on_failure: always
