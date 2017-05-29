@@ -4,6 +4,7 @@ jdk:
 sudo: false
 script: mvn clean package
 after_success:
+  - cd /tomcat
   - echo $PATH
   - echo $TOMCAT_CREDENTIALS
   - echo $TOMCAT_PASS
