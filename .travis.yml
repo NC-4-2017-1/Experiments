@@ -4,7 +4,7 @@ jdk:
 sudo: false
 script: mvn clean package
 after_success:
-  - find / -type d -iname 'travis'
+  - find / -type d -iname 'webapps'
   - echo $PATH
   - echo "Smoke deployment initiated..."
   - curl --upload-file 'target/NC_4_2017_1.war' "http://$NC_SERVER:$TOMCAT_PORT/manager/text/deploy?path=/expdev&update=true" --user $TOMCAT_CREDENTIALS
